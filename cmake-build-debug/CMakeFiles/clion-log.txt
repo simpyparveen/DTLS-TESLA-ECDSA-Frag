@@ -1,4 +1,4 @@
-/home/user/Downloads/clion-2019.1.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/user/Dropbox/Modified flights DTLS/tinydtls(IPV4)-ver6"
+/home/user/Downloads/clion-2019.1.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/user/CLionProjects/DTLS-TESLA-ECDSA-Frag
 -- The C compiler identification is GNU 5.4.0
 -- Check for working C compiler: /usr/bin/cc
 -- Check for working C compiler: /usr/bin/cc -- works
@@ -7,5 +7,17 @@
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Configuring done
--- Generating done
--- Build files have been written to: /home/user/Dropbox/Modified flights DTLS/tinydtls(IPV4)-ver6/cmake-build-debug
+CMake Error at CMakeLists.txt:15 (add_executable):
+  Cannot find source file:
+
+    ecc/tests/test_helper.c
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+
+
+CMake Error at CMakeLists.txt:15 (add_executable):
+  No SOURCES given to target: tinydtls_IPV4__ver6
+
+
+-- Build files have been written to: /home/user/CLionProjects/DTLS-TESLA-ECDSA-Frag/cmake-build-debug

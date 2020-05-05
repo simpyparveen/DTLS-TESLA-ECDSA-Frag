@@ -1843,9 +1843,11 @@ dtls_send_multi(dtls_context_t *ctx, dtls_peer_t *peer,
             } else {
                 dtls_set_retransmit_timer(ctx, n->timeout);
                 dtls_debug("copied to sendqueue\n");
+                printf("copied to sendqueue\n");
             }
         } else
             dtls_warn("retransmit buffer full\n");
+        printf("retransmit buffer full\n");
     }
 
 /* FIXME: copy to peer's sendqueue (after fragmentation if
