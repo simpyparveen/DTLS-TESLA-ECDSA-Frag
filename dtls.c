@@ -1852,8 +1852,18 @@ dtls_send_multi(dtls_context_t *ctx, dtls_peer_t *peer,
 
 /* FIXME: copy to peer's sendqueue (after fragmentation if
  * necessary) and initialize retransmit timer */
+    if (type == DTLS_CT_HANDSHAKE && buf_array[0][0] == DTLS_HT_CLIENT_KEY_EXCHANGE) {
+        unsigned char *bufx = sendbuf;
+        int lenx = len;
+        while (lenx > 0) {
+            res = CALL(ctx, write, session, bufx, 1200);
+            bufx = bufx + 1200;
+            lenx -= 1200;
+        }
+    } else {
+        res = CALL(ctx, write, session, sendbuf, len);
+    }
 
-    res = CALL(ctx, write, session, sendbuf, len);
 
 /* Guess number of bytes application data actually sent:
  * dtls_prepare_record() tells us in len the number of bytes to
@@ -3809,6 +3819,7 @@ handle_handshake_msg(dtls_context_t *ctx, dtls_peer_t *peer, session_t *session,
     uint32_t pub_y[8];
     uint8_t pub_x8[32];
     uint8_t pub_y8[32];
+    printf("\n data_length %d", data_length);
 
 /* This will clear the retransmission buffer if we get an expected
  * handshake message. We have to make sure that no handshake message
